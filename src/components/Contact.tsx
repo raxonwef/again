@@ -117,8 +117,9 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 <motion.a
                   key={index}
                   href={info.link}
-                  whileHover={{ scale: 1.03, x: 10, rotateY: 5 }}
-                  className={`flex items-center space-x-4 p-4 rounded-lg transition-all duration-300 hover:shadow-md backdrop-blur-sm border ${
+                  whileHover={{ scale: 1.01, x: 10, rotateY: 5 }}
+                  transition={{ duration: 0.4 }}
+                  className={`flex items-center space-x-4 p-4 rounded-lg transition-all duration-400 hover:shadow-md backdrop-blur-sm border ${
                     darkMode
                       ? 'bg-white/5 hover:bg-white/10 text-gray-300 border-white/10'
                       : 'bg-black/5 hover:bg-black/10 text-gray-700 border-black/10'
@@ -155,10 +156,10 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                   <motion.a
                     key={index}
                     href={social.url}
-                    whileHover={{ scale: 1.3, rotate: 360, y: -5 }}
+                    whileHover={{ scale: 1.1, rotate: 360, y: -5 }}
                     whileTap={{ scale: 0.9 }}
-                    transition={{ duration: 0.6 }}
-                    className={`p-3 rounded-full transition-all duration-300 hover:shadow-lg backdrop-blur-sm border ${
+                    transition={{ duration: 0.8 }}
+                    className={`p-3 rounded-full transition-all duration-400 hover:shadow-lg backdrop-blur-sm border ${
                       darkMode
                         ? 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white border-white/20'
                         : 'bg-black/10 text-gray-700 hover:bg-black/20 hover:text-gray-900 border-black/20'
@@ -196,13 +197,14 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                     Name
                   </label>
                   <motion.input
-                    whileFocus={{ scale: 1.02, y: -2 }}
+                    whileFocus={{ scale: 1.01, y: -2 }}
+                    transition={{ duration: 0.4 }}
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm ${
+                    className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-400 backdrop-blur-sm ${
                       darkMode
                         ? 'bg-white/10 border-white/20 text-white placeholder-gray-500'
                         : 'bg-black/10 border-black/20 text-gray-900 placeholder-gray-500'
@@ -217,13 +219,14 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                     Email
                   </label>
                   <motion.input
-                    whileFocus={{ scale: 1.02, y: -2 }}
+                    whileFocus={{ scale: 1.01, y: -2 }}
+                    transition={{ duration: 0.4 }}
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm ${
+                    className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-400 backdrop-blur-sm ${
                       darkMode
                         ? 'bg-white/10 border-white/20 text-white placeholder-gray-500'
                         : 'bg-black/10 border-black/20 text-gray-900 placeholder-gray-500'
@@ -240,13 +243,14 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                   Subject
                 </label>
                 <motion.input
-                  whileFocus={{ scale: 1.02, y: -2 }}
+                  whileFocus={{ scale: 1.01, y: -2 }}
+                  transition={{ duration: 0.4 }}
                   type="text"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm ${
+                  className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-400 backdrop-blur-sm ${
                     darkMode
                       ? 'bg-white/10 border-white/20 text-white placeholder-gray-500'
                       : 'bg-black/10 border-black/20 text-gray-900 placeholder-gray-500'
@@ -262,13 +266,14 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                   Message
                 </label>
                 <motion.textarea
-                  whileFocus={{ scale: 1.02, y: -2 }}
+                  whileFocus={{ scale: 1.01, y: -2 }}
+                  transition={{ duration: 0.4 }}
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows={6}
-                  className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none backdrop-blur-sm ${
+                  className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-400 resize-none backdrop-blur-sm ${
                     darkMode
                       ? 'bg-white/10 border-white/20 text-white placeholder-gray-500'
                       : 'bg-black/10 border-black/20 text-gray-900 placeholder-gray-500'
@@ -278,10 +283,11 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               </div>
               
               <motion.button
-                whileHover={{ scale: 1.05, y: -3, boxShadow: "0 15px 35px rgba(59, 130, 246, 0.4)" }}
+                whileHover={{ scale: 1.02, y: -3, boxShadow: "0 15px 35px rgba(59, 130, 246, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.4 }}
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-400 shadow-lg flex items-center justify-center space-x-2"
               >
                 <Send className="h-5 w-5" />
                 <span>Send Message</span>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useScrollPosition } from '../hooks/useScrollPosition';
 
 interface HeaderProps {
   darkMode: boolean;
@@ -17,6 +18,8 @@ const Header: React.FC<HeaderProps> = ({
   mobileMenuOpen,
   setMobileMenuOpen
 }) => {
+  const { isScrolled } = useScrollPosition();
+
   const navItems = [
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
@@ -39,17 +42,28 @@ const Header: React.FC<HeaderProps> = ({
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
+      className={`fixed z-50 transition-all duration-500 ${
+        isScrolled 
+          ? 'top-4 left-4 right-4 rounded-2xl backdrop-blur-xl border shadow-2xl' 
+          : 'top-0 left-0 right-0 backdrop-blur-md border-b'
+      } ${
         darkMode
-          ? 'bg-black/80 border-gray-800'
-          : 'bg-white/80 border-gray-200'
-      } border-b`}
+          ? isScrolled 
+            ? 'bg-black/20 border-white/10 shadow-black/20' 
+            : 'bg-black/80 border-gray-800'
+          : isScrolled 
+            ? 'bg-white/20 border-black/10 shadow-black/10' 
+            : 'bg-white/80 border-gray-200'
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={`mx-auto transition-all duration-500 ${
+        isScrolled ? 'max-w-6xl px-6' : 'max-w-7xl px-4 sm:px-6 lg:px-8'
+      }`}>
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.4 }}
             className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
           >
             John Doe
@@ -60,10 +74,11 @@ const Header: React.FC<HeaderProps> = ({
             {navItems.map((item) => (
               <motion.button
                 key={item.name}
-                whileHover={{ scale: 1.1, y: -2 }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.4 }}
                 onClick={() => scrollToSection(item.href)}
-                className={`px-3 py-2 rounded-lg transition-all duration-200 ${
+                className={`px-3 py-2 rounded-lg transition-all duration-400 ${
                   activeSection === item.href.slice(1)
                     ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
                     : darkMode
@@ -79,13 +94,14 @@ const Header: React.FC<HeaderProps> = ({
           {/* Dark Mode Toggle & Mobile Menu */}
           <div className="flex items-center space-x-4">
             <motion.button
-              whileHover={{ scale: 1.1, rotate: 180 }}
+              whileHover={{ scale: 1.05, rotate: 180 }}
               whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.4 }}
               onClick={toggleDarkMode}
-              className={`p-2 rounded-full transition-all duration-300 ${
+              className={`p-2 rounded-full transition-all duration-400 backdrop-blur-sm ${
                 darkMode
-                  ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-white/10 text-yellow-400 hover:bg-white/20 border border-white/20'
+                  : 'bg-black/10 text-gray-700 hover:bg-black/20 border border-black/20'
               }`}
             >
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -93,13 +109,14 @@ const Header: React.FC<HeaderProps> = ({
 
             {/* Mobile Menu Button */}
             <motion.button
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.4 }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`md:hidden p-2 rounded-lg transition-colors duration-200 ${
+              className={`md:hidden p-2 rounded-lg transition-colors duration-400 backdrop-blur-sm ${
                 darkMode
-                  ? 'text-gray-300 hover:text-white hover:bg-white/10'
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-black/10'
+                  ? 'text-gray-300 hover:text-white hover:bg-white/10 border border-white/20'
+                  : 'text-gray-700 hover:text-gray-900 hover:bg-black/10 border border-black/20'
               }`}
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -116,8 +133,8 @@ const Header: React.FC<HeaderProps> = ({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className={`md:hidden border-t backdrop-blur-md ${
-              darkMode ? 'bg-black/90 border-gray-800' : 'bg-white/90 border-gray-200'
+            className={`md:hidden border-t backdrop-blur-xl ${
+              darkMode ? 'bg-black/20 border-white/10' : 'bg-white/20 border-black/10'
             }`}
           >
             <div className="px-4 py-4 space-y-2">
@@ -127,15 +144,16 @@ const Header: React.FC<HeaderProps> = ({
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05, x: 10 }}
+                  whileHover={{ scale: 1.02, x: 10 }}
                   whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.4 }}
                   onClick={() => scrollToSection(item.href)}
-                  className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                  className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-400 backdrop-blur-sm ${
                     activeSection === item.href.slice(1)
                       ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
                       : darkMode
-                      ? 'text-gray-300 hover:text-white hover:bg-white/10'
-                      : 'text-gray-700 hover:text-gray-900 hover:bg-black/10'
+                      ? 'text-gray-300 hover:text-white hover:bg-white/10 border border-white/10'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-black/10 border border-black/10'
                   }`}
                 >
                   {item.name}

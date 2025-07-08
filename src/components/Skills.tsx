@@ -69,15 +69,16 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
           {skillCategories.map((category, categoryIndex) => (
             <motion.div 
               key={categoryIndex} 
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.02,
                 y: -10,
                 rotateX: 5,
                 boxShadow: darkMode ? "0 25px 50px rgba(139, 92, 246, 0.3)" : "0 25px 50px rgba(0, 0, 0, 0.1)"
               }}
-              className={`p-6 rounded-xl backdrop-blur-sm border ${
+              transition={{ duration: 0.4 }}
+              className={`p-6 rounded-xl backdrop-blur-sm border transition-all duration-400 ${
                 darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
-              } shadow-lg hover:shadow-xl transition-all duration-300`}
+              } shadow-lg hover:shadow-xl`}
             >
               <h3 className={`text-xl font-bold mb-6 text-center ${
                 darkMode ? 'text-white' : 'text-gray-900'

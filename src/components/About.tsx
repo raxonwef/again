@@ -109,15 +109,16 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
               {highlights.map((highlight, index) => (
                 <motion.div 
                   key={index} 
-                  whileHover={{ 
-                    scale: 1.05, 
+                  whileHover={{
+                    scale: 1.02,
                     y: -10,
                     rotateY: 10,
                     boxShadow: darkMode ? "0 20px 40px rgba(59, 130, 246, 0.3)" : "0 20px 40px rgba(0, 0, 0, 0.1)"
                   }}
-                  className={`p-4 rounded-lg backdrop-blur-sm border ${
+                  transition={{ duration: 0.4 }}
+                  className={`p-4 rounded-lg backdrop-blur-sm border transition-all duration-400 ${
                     darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
-                  } shadow-md hover:shadow-lg transition-all duration-300`}
+                  } shadow-md hover:shadow-lg`}
                 >
                   <div className="text-blue-500 mb-3">
                     {highlight.icon}

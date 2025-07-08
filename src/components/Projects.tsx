@@ -114,10 +114,11 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
           {/* Tab Navigation */}
           <div className="flex justify-center space-x-4">
             <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.4 }}
               onClick={() => setActiveTab('serious')}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center space-x-2 backdrop-blur-sm ${
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-400 flex items-center space-x-2 backdrop-blur-sm ${
                 activeTab === 'serious'
                   ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
                   : darkMode
@@ -129,10 +130,11 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
               <span>Serious Projects</span>
             </motion.button>
             <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.4 }}
               onClick={() => setActiveTab('fun')}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center space-x-2 backdrop-blur-sm ${
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-400 flex items-center space-x-2 backdrop-blur-sm ${
                 activeTab === 'fun'
                   ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
                   : darkMode
@@ -161,22 +163,22 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
               <motion.div 
                 key={`${activeTab}-${index}`}
                 variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.08, 
+                whileHover={{
+                  scale: 1.03,
                   y: -15,
                   rotateY: 5,
                   rotateX: 5,
                   boxShadow: darkMode ? "0 30px 60px rgba(59, 130, 246, 0.4)" : "0 30px 60px rgba(0, 0, 0, 0.15)",
-                  transition: { duration: 0.4, ease: "easeOut" }
                 }}
-                className={`rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-sm border ${
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className={`rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-400 backdrop-blur-sm border ${
                   darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
                 }`}
               >
                 <div className="relative overflow-hidden">
                   <motion.img
-                    whileHover={{ scale: 1.15, rotate: 2 }}
-                    transition={{ duration: 0.4 }}
+                    whileHover={{ scale: 1.08, rotate: 2 }}
+                    transition={{ duration: 0.6 }}
                     src={project.image}
                     alt={project.title}
                     className="w-full h-48 object-cover"
@@ -201,7 +203,8 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                     {project.tech.map((tech, techIndex) => (
                       <motion.span 
                         key={techIndex}
-                        whileHover={{ scale: 1.1, y: -2 }}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        transition={{ duration: 0.4 }}
                         className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm border ${
                           darkMode ? 'bg-white/10 text-gray-300 border-white/20' : 'bg-black/10 text-gray-700 border-black/20'
                         }`}
@@ -214,10 +217,11 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                   {/* Links */}
                   <div className="flex space-x-4">
                     <motion.a
-                      whileHover={{ scale: 1.05, x: 5 }}
+                      whileHover={{ scale: 1.02, x: 5 }}
                       whileTap={{ scale: 0.95 }}
+                      transition={{ duration: 0.4 }}
                       href={project.github}
-                      className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors duration-200 backdrop-blur-sm border ${
+                      className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors duration-400 backdrop-blur-sm border ${
                         darkMode
                           ? 'bg-white/10 text-gray-300 hover:bg-white/20 border-white/20'
                           : 'bg-black/10 text-gray-700 hover:bg-black/20 border-black/20'
@@ -227,10 +231,11 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                       <span>Code</span>
                     </motion.a>
                     <motion.a
-                      whileHover={{ scale: 1.05, x: 5 }}
+                      whileHover={{ scale: 1.02, x: 5 }}
                       whileTap={{ scale: 0.95 }}
+                      transition={{ duration: 0.4 }}
                       href={project.demo}
-                      className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-200"
+                      className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-400"
                     >
                       <ExternalLink className="h-4 w-4" />
                       <span>Demo</span>

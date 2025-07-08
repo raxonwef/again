@@ -46,13 +46,14 @@ const Footer: React.FC<FooterProps> = ({ darkMode }) => {
             </p>
             
             <motion.button
-              whileHover={{ scale: 1.1, y: -2 }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.4 }}
               onClick={scrollToTop}
-              className={`p-2 rounded-full transition-all duration-300 hover:shadow-lg ${
+              className={`p-2 rounded-full transition-all duration-400 hover:shadow-lg backdrop-blur-sm ${
                 darkMode
-                  ? 'bg-gray-900 text-gray-300 hover:bg-gray-800 border border-gray-800'
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
+                  ? 'bg-white/10 text-gray-300 hover:bg-white/20 border border-white/20'
+                  : 'bg-black/10 text-gray-700 hover:bg-black/20 border border-black/20'
               }`}
             >
               <ArrowUp className="h-5 w-5" />

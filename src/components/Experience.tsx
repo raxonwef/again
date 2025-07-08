@@ -83,14 +83,16 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
             {experiences.map((exp, index) => (
               <motion.div 
                 key={index} 
-                whileHover={{ scale: 1.03, x: index % 2 === 0 ? -10 : 10 }}
+                whileHover={{ scale: 1.01, x: index % 2 === 0 ? -10 : 10 }}
+                transition={{ duration: 0.4 }}
                 className={`relative flex flex-col md:flex-row items-start ${
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
                 }`}
               >
                 {/* Timeline Dot */}
                 <motion.div 
-                  whileHover={{ scale: 1.5, rotate: 180 }}
+                  whileHover={{ scale: 1.3, rotate: 180 }}
+                  transition={{ duration: 0.4 }}
                   className={`absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 rounded-full border-4 backdrop-blur-sm ${
                     darkMode
                       ? 'bg-black border-blue-400 shadow-lg shadow-blue-400/50'
@@ -102,13 +104,14 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
                 <div className={`ml-12 md:ml-0 ${
                   index % 2 === 0 ? 'md:mr-8 md:text-right' : 'md:ml-8'
                 } md:w-1/2`}>
-                  <motion.div 
-                    whileHover={{ 
+                  <motion.div
+                    whileHover={{
                       y: -10, 
                       rotateY: index % 2 === 0 ? -5 : 5,
                       boxShadow: darkMode ? "0 25px 50px rgba(34, 197, 94, 0.3)" : "0 25px 50px rgba(0, 0, 0, 0.1)"
                     }}
-                    className={`p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm border ${
+                    transition={{ duration: 0.4 }}
+                    className={`p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-400 backdrop-blur-sm border ${
                       darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
                     }`}
                   >

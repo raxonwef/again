@@ -66,9 +66,10 @@ const Resume: React.FC<ResumeProps> = ({ darkMode }) => {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-8"></div>
           
           <motion.button 
-            whileHover={{ scale: 1.05, y: -3, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.4)" }}
+            whileHover={{ scale: 1.02, y: -3, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.4)" }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg flex items-center space-x-2 mx-auto"
+            transition={{ duration: 0.4 }}
+            className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-400 shadow-lg flex items-center space-x-2 mx-auto"
           >
             <Download className="h-5 w-5" />
             <span>Download Resume</span>
@@ -78,13 +79,14 @@ const Resume: React.FC<ResumeProps> = ({ darkMode }) => {
         <div className="grid lg:grid-cols-2 gap-8" ref={cardsRef}>
           {/* Education */}
           <motion.div 
-            whileHover={{ 
-              scale: 1.03, 
+            whileHover={{
+              scale: 1.01,
               y: -10,
               rotateY: -5,
               boxShadow: darkMode ? "0 25px 50px rgba(34, 197, 94, 0.3)" : "0 25px 50px rgba(0, 0, 0, 0.1)"
             }}
-            className={`p-8 rounded-xl shadow-lg backdrop-blur-sm border ${
+            transition={{ duration: 0.4 }}
+            className={`p-8 rounded-xl shadow-lg backdrop-blur-sm border transition-all duration-400 ${
               darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
             }`}
           >
@@ -103,7 +105,8 @@ const Resume: React.FC<ResumeProps> = ({ darkMode }) => {
               {education.map((edu, index) => (
                 <motion.div 
                   key={index}
-                  whileHover={{ x: 10, scale: 1.02 }}
+                  whileHover={{ x: 10, scale: 1.01 }}
+                  transition={{ duration: 0.4 }}
                   className={`border-l-4 border-blue-500 pl-6 backdrop-blur-sm ${
                     darkMode ? 'bg-white/5' : 'bg-black/5'
                   } p-4 rounded-r-lg`}
@@ -137,13 +140,14 @@ const Resume: React.FC<ResumeProps> = ({ darkMode }) => {
 
           {/* Certifications */}
           <motion.div 
-            whileHover={{ 
-              scale: 1.03, 
+            whileHover={{
+              scale: 1.01,
               y: -10,
               rotateY: 5,
               boxShadow: darkMode ? "0 25px 50px rgba(139, 92, 246, 0.3)" : "0 25px 50px rgba(0, 0, 0, 0.1)"
             }}
-            className={`p-8 rounded-xl shadow-lg backdrop-blur-sm border ${
+            transition={{ duration: 0.4 }}
+            className={`p-8 rounded-xl shadow-lg backdrop-blur-sm border transition-all duration-400 ${
               darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
             }`}
           >
@@ -162,7 +166,8 @@ const Resume: React.FC<ResumeProps> = ({ darkMode }) => {
               {certifications.map((cert, index) => (
                 <motion.div 
                   key={index}
-                  whileHover={{ x: 10, scale: 1.02 }}
+                  whileHover={{ x: 10, scale: 1.01 }}
+                  transition={{ duration: 0.4 }}
                   className={`border-l-4 border-purple-500 pl-6 backdrop-blur-sm ${
                     darkMode ? 'bg-white/5' : 'bg-black/5'
                   } p-4 rounded-r-lg`}
@@ -190,12 +195,13 @@ const Resume: React.FC<ResumeProps> = ({ darkMode }) => {
 
         {/* Resume Preview */}
         <motion.div 
-          whileHover={{ 
-            scale: 1.02, 
+          whileHover={{
+            scale: 1.01,
             y: -10,
             boxShadow: darkMode ? "0 30px 60px rgba(59, 130, 246, 0.3)" : "0 30px 60px rgba(0, 0, 0, 0.1)"
           }}
-          className={`mt-12 p-8 rounded-xl shadow-lg backdrop-blur-sm border ${
+          transition={{ duration: 0.4 }}
+          className={`mt-12 p-8 rounded-xl shadow-lg backdrop-blur-sm border transition-all duration-400 ${
             darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
           }`}
         >

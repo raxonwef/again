@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import StarField from './components/StarField';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -20,6 +21,7 @@ function App() {
     <div className={`min-h-screen transition-colors duration-300 ${
       darkMode ? 'bg-gray-900' : 'bg-white'
     }`}>
+      <StarField darkMode={darkMode} />
       <Header
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}

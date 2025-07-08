@@ -116,10 +116,11 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(59, 130, 246, 0.5)" }}
+            whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(59, 130, 246, 0.5)" }}
             whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.4 }}
             onClick={scrollToAbout}
-            className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg relative z-10"
+            className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-400 shadow-lg relative z-10 backdrop-blur-sm"
           >
             Get to know me
           </motion.button>
@@ -134,7 +135,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 3, repeat: Infinity }}
           >
           <ArrowDown className={`h-6 w-6 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`} />
           </motion.div>
