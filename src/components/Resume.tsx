@@ -52,7 +52,7 @@ const Resume: React.FC<ResumeProps> = ({ darkMode }) => {
       <div className="absolute inset-0 pointer-events-none">
         {/* Wave separator at top */}
         <svg className="absolute top-0 left-0 w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M892.25,114.72c-56.51,18.99-118.42,29.16-178.66,21.69C637.94,127.4,562.58,108.16,487,96.69c-37.17-5.64-75.21-10.89-113.84-11.26-61.39-.59-121.24,8.86-181.84,17.11C131.47,109.92,70.87,118.54,0,120V0H1200V95.8C1132.19,118.92,1012.82,96.31,892.25,114.72Z" className={darkMode ? 'fill-gray-950' : 'fill-gray-50'}></path>
+          <path d="M892.25,114.72c-56.51,18.99-118.42,29.16-178.66,21.69C637.94,127.4,562.58,108.16,487,96.69c-37.17-5.64-75.21-10.89-113.84-11.26-61.39-.59-121.24,8.86-181.84,17.11C131.47,109.92,70.87,118.54,0,120V0H1200V95.8C1132.19,118.92,1012.82,96.31,892.25,114.72Z" className={darkMode ? 'fill-gray-950' : 'fill-gray-200'}></path>
         </svg>
         
         {/* Gradient Orbs */}
@@ -92,8 +92,8 @@ const Resume: React.FC<ResumeProps> = ({ darkMode }) => {
               boxShadow: darkMode ? "0 25px 50px rgba(34, 197, 94, 0.3)" : "0 25px 50px rgba(0, 0, 0, 0.1)"
             }}
             transition={{ duration: 0.4 }}
-            className={`p-8 rounded-xl shadow-lg backdrop-blur-sm border transition-all duration-400 ${
-              darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
+            className={`p-8 rounded-xl backdrop-blur-sm border transition-all duration-400 ${
+              darkMode ? 'bg-white/5 border-white/10 shadow-lg' : 'bg-white/70 border-white/90 shadow-xl shadow-green-200/40'
             }`}
           >
             <div className="flex items-center space-x-3 mb-6">
@@ -153,8 +153,8 @@ const Resume: React.FC<ResumeProps> = ({ darkMode }) => {
               boxShadow: darkMode ? "0 25px 50px rgba(139, 92, 246, 0.3)" : "0 25px 50px rgba(0, 0, 0, 0.1)"
             }}
             transition={{ duration: 0.4 }}
-            className={`p-8 rounded-xl shadow-lg backdrop-blur-sm border transition-all duration-400 ${
-              darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
+            className={`p-8 rounded-xl backdrop-blur-sm border transition-all duration-400 ${
+              darkMode ? 'bg-white/5 border-white/10 shadow-lg' : 'bg-white/70 border-white/90 shadow-xl shadow-purple-200/40'
             }`}
           >
             <div className="flex items-center space-x-3 mb-6">
@@ -207,8 +207,8 @@ const Resume: React.FC<ResumeProps> = ({ darkMode }) => {
             boxShadow: darkMode ? "0 30px 60px rgba(59, 130, 246, 0.3)" : "0 30px 60px rgba(0, 0, 0, 0.1)"
           }}
           transition={{ duration: 0.4 }}
-          className={`mt-12 p-8 rounded-xl shadow-lg backdrop-blur-sm border transition-all duration-400 ${
-            darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
+          className={`mt-12 p-8 rounded-xl backdrop-blur-sm border transition-all duration-400 ${
+            darkMode ? 'bg-white/5 border-white/10 shadow-lg' : 'bg-white/70 border-white/90 shadow-xl shadow-blue-200/40'
           }`}
         >
           <div className="flex items-center space-x-3 mb-6">
