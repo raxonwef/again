@@ -46,14 +46,20 @@ const Resume: React.FC<ResumeProps> = ({ darkMode }) => {
 
   return (
     <section id="resume" className={`py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden ${
-      darkMode ? 'bg-black' : 'bg-white'
+      darkMode ? 'bg-gradient-to-b from-black via-gray-950 to-black' : 'bg-gradient-to-b from-white via-purple-50/30 to-white'
     }`}>
-      {/* Gradient Orbs */}
-      <div className={`absolute inset-0 pointer-events-none ${
-        darkMode ? 'opacity-100' : 'opacity-20'
-      }`}>
-        <span className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-full blur-3xl"></span>
-        <span className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/15 to-indigo-600/15 rounded-full blur-3xl"></span>
+      {/* Section Flow Styling */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Wave separator at top */}
+        <svg className="absolute top-0 left-0 w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M892.25,114.72c-56.51,18.99-118.42,29.16-178.66,21.69C637.94,127.4,562.58,108.16,487,96.69c-37.17-5.64-75.21-10.89-113.84-11.26-61.39-.59-121.24,8.86-181.84,17.11C131.47,109.92,70.87,118.54,0,120V0H1200V95.8C1132.19,118.92,1012.82,96.31,892.25,114.72Z" className={darkMode ? 'fill-gray-950' : 'fill-gray-50'}></path>
+        </svg>
+        
+        {/* Gradient Orbs */}
+        <div className={`${darkMode ? 'opacity-100' : 'opacity-20'}`}>
+          <span className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-full blur-3xl"></span>
+          <span className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/15 to-indigo-600/15 rounded-full blur-3xl"></span>
+        </div>
       </div>
       
       <div className="max-w-7xl mx-auto" ref={sectionRef}>

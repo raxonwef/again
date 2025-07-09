@@ -14,8 +14,8 @@ const Footer: React.FC<FooterProps> = ({ darkMode }) => {
   return (
     <footer className={`py-8 px-4 sm:px-6 lg:px-8 border-t ${
       darkMode
-        ? 'bg-black border-gray-800'
-        : 'bg-gray-50 border-gray-200'
+        ? 'bg-gradient-to-r from-black via-gray-950 to-black border-gray-800'
+        : 'bg-gradient-to-r from-gray-50 via-blue-50/30 to-gray-50 border-gray-200'
     }`}>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">

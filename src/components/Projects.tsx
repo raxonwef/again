@@ -92,14 +92,20 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
 
   return (
     <section id="projects" className={`py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden ${
-      darkMode ? 'bg-black' : 'bg-white'
+      darkMode ? 'bg-gradient-to-b from-black via-gray-950 to-black' : 'bg-gradient-to-b from-white via-blue-50/30 to-white'
     }`}>
-      {/* Gradient Orbs */}
-      <div className={`absolute inset-0 pointer-events-none ${
-        darkMode ? 'opacity-100' : 'opacity-20'
-      }`}>
-        <span className="absolute top-0 left-1/3 w-96 h-96 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-full blur-3xl"></span>
-        <span className="absolute bottom-0 right-1/3 w-72 h-72 bg-gradient-to-r from-pink-600/15 to-red-600/15 rounded-full blur-3xl"></span>
+      {/* Section Flow Styling */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Wave separator at top */}
+        <svg className="absolute top-0 left-0 w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" className={darkMode ? 'fill-gray-950' : 'fill-gray-50'}></path>
+        </svg>
+        
+        {/* Gradient Orbs */}
+        <div className={`${darkMode ? 'opacity-100' : 'opacity-20'}`}>
+          <span className="absolute top-0 left-1/3 w-96 h-96 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-full blur-3xl"></span>
+          <span className="absolute bottom-0 right-1/3 w-72 h-72 bg-gradient-to-r from-pink-600/15 to-red-600/15 rounded-full blur-3xl"></span>
+        </div>
       </div>
       
       <div className="max-w-7xl mx-auto" ref={sectionRef}>

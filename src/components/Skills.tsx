@@ -45,14 +45,20 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
 
   return (
     <section id="skills" className={`py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden ${
-      darkMode ? 'bg-black' : 'bg-gray-50'
+      darkMode ? 'bg-gradient-to-b from-black via-gray-950 to-black' : 'bg-gradient-to-b from-gray-50 via-purple-50/30 to-gray-50'
     }`}>
-      {/* Gradient Orbs */}
-      <div className={`absolute inset-0 pointer-events-none ${
-        darkMode ? 'opacity-100' : 'opacity-20'
-      }`}>
-        <span className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 rounded-full blur-3xl animate-pulse"></span>
-        <span className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-600/15 to-pink-600/15 rounded-full blur-3xl animate-pulse delay-500"></span>
+      {/* Section Flow Styling */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Wave separator at top */}
+        <svg className="absolute top-0 left-0 w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" className={darkMode ? 'fill-gray-950' : 'fill-white'}></path>
+        </svg>
+        
+        {/* Gradient Orbs */}
+        <div className={`${darkMode ? 'opacity-100' : 'opacity-20'}`}>
+          <span className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 rounded-full blur-3xl animate-pulse"></span>
+          <span className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-600/15 to-pink-600/15 rounded-full blur-3xl animate-pulse delay-500"></span>
+        </div>
       </div>
       
       <div className="max-w-7xl mx-auto" ref={sectionRef}>

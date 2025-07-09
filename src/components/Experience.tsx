@@ -52,14 +52,20 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
 
   return (
     <section id="experience" className={`py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden ${
-      darkMode ? 'bg-black' : 'bg-gray-50'
+      darkMode ? 'bg-gradient-to-b from-black via-gray-950 to-black' : 'bg-gradient-to-b from-gray-50 via-indigo-50/30 to-gray-50'
     }`}>
-      {/* Gradient Orbs */}
-      <div className={`absolute inset-0 pointer-events-none ${
-        darkMode ? 'opacity-100' : 'opacity-20'
-      }`}>
-        <span className="absolute top-1/3 right-0 w-80 h-80 bg-gradient-to-l from-emerald-600/20 to-teal-600/20 rounded-full blur-3xl"></span>
-        <span className="absolute bottom-1/3 left-0 w-64 h-64 bg-gradient-to-r from-violet-600/15 to-purple-600/15 rounded-full blur-3xl"></span>
+      {/* Section Flow Styling */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Wave separator at top */}
+        <svg className="absolute top-0 left-0 w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className={darkMode ? 'fill-black' : 'fill-white'}></path>
+        </svg>
+        
+        {/* Gradient Orbs */}
+        <div className={`${darkMode ? 'opacity-100' : 'opacity-20'}`}>
+          <span className="absolute top-1/3 right-0 w-80 h-80 bg-gradient-to-l from-emerald-600/20 to-teal-600/20 rounded-full blur-3xl"></span>
+          <span className="absolute bottom-1/3 left-0 w-64 h-64 bg-gradient-to-r from-violet-600/15 to-purple-600/15 rounded-full blur-3xl"></span>
+        </div>
       </div>
       
       <div className="max-w-7xl mx-auto" ref={sectionRef}>
