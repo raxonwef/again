@@ -14,9 +14,21 @@ interface Star {
   twinklePhase: number;
 }
 
+interface GeometricShape {
+  x: number;
+  y: number;
+  size: number;
+  rotation: number;
+  rotationSpeed: number;
+  opacity: number;
+  type: 'circle' | 'hexagon' | 'triangle';
+  glowIntensity: number;
+}
+
 const StarField: React.FC<StarFieldProps> = ({ darkMode }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const starsRef = useRef<Star[]>([]);
+  const shapesRef = useRef<GeometricShape[]>([]);
   const animationRef = useRef<number>();
   const mouseRef = useRef({ x: 0, y: 0 });
 
@@ -34,7 +46,7 @@ const StarField: React.FC<StarFieldProps> = ({ darkMode }) => {
 
     const createStars = () => {
       const stars: Star[] = [];
-      const numStars = Math.floor((window.innerWidth * window.innerHeight) / 8000);
+      const numStars = Math.floor((window.innerWidth * window.innerHeight) / 6000);
       
       for (let i = 0; i < numStars; i++) {
         stars.push({
@@ -42,13 +54,53 @@ const StarField: React.FC<StarFieldProps> = ({ darkMode }) => {
           y: Math.random() * canvas.height,
           size: Math.random() * 2 + 0.5,
           opacity: Math.random() * 0.8 + 0.2,
-          speed: Math.random() * 0.5 + 0.1,
+          speed: Math.random() * 0.3 + 0.1,
           twinkleSpeed: Math.random() * 0.02 + 0.01,
           twinklePhase: Math.random() * Math.PI * 2
         });
       }
       
       starsRef.current = stars;
+    };
+
+    const createGeometricShapes = () => {
+      const shapes: GeometricShape[] = [];
+      const numShapes = 8;
+      
+      for (let i = 0; i < numShapes; i++) {
+        shapes.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 100 + 50,
+          rotation: Math.random() * Math.PI * 2,
+          rotationSpeed: (Math.random() - 0.5) * 0.01,
+          opacity: Math.random() * 0.3 + 0.1,
+          type: ['circle', 'hexagon', 'triangle'][Math.floor(Math.random() * 3)] as 'circle' | 'hexagon' | 'triangle',
+          glowIntensity: Math.random() * 0.5 + 0.3
+        });
+      }
+      
+      shapesRef.current = shapes;
+    };
+
+    const drawHexagon = (ctx: CanvasRenderingContext2D, x: number, y: number, size: number) => {
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (i * Math.PI) / 3;
+        const px = x + size * Math.cos(angle);
+        const py = y + size * Math.sin(angle);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+    };
+
+    const drawTriangle = (ctx: CanvasRenderingContext2D, x: number, y: number, size: number) => {
+      ctx.beginPath();
+      ctx.moveTo(x, y - size);
+      ctx.lineTo(x - size * 0.866, y + size * 0.5);
+      ctx.lineTo(x + size * 0.866, y + size * 0.5);
+      ctx.closePath();
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -60,8 +112,78 @@ const StarField: React.FC<StarFieldProps> = ({ darkMode }) => {
       
       const mouse = mouseRef.current;
       
+      // Draw geometric shapes
+      shapesRef.current.forEach((shape) => {
+        // Mouse interaction
+        const dx = shape.x - mouse.x;
+        const dy = shape.y - mouse.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 200) {
+          const force = (200 - distance) / 200;
+          shape.x += (dx / distance) * force * 0.3;
+          shape.y += (dy / distance) * force * 0.3;
+        }
+        
+        // Gentle floating movement
+        shape.y -= 0.1;
+        shape.x += Math.sin(Date.now() * 0.0005 + shape.rotation) * 0.2;
+        shape.rotation += shape.rotationSpeed;
+        
+        // Wrap around screen
+        if (shape.y < -shape.size) {
+          shape.y = canvas.height + shape.size;
+          shape.x = Math.random() * canvas.width;
+        }
+        if (shape.x < -shape.size) shape.x = canvas.width + shape.size;
+        if (shape.x > canvas.width + shape.size) shape.x = -shape.size;
+        
+        // Draw shape with glow
+        ctx.save();
+        ctx.translate(shape.x, shape.y);
+        ctx.rotate(shape.rotation);
+        ctx.globalAlpha = shape.opacity * shape.glowIntensity;
+        
+        if (darkMode) {
+          // Dark mode - vibrant glowing shapes
+          const colors = ['#3b82f6', '#8b5cf6', '#06b6d4', '#10b981'];
+          const color = colors[Math.floor((shape.x + shape.y) / 100) % colors.length];
+          
+          // Glow effect
+          ctx.shadowColor = color;
+          ctx.shadowBlur = 20;
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 2;
+        } else {
+          // Light mode - subtle dark shapes
+          const colors = ['#1e293b', '#374151', '#4b5563', '#6b7280'];
+          const color = colors[Math.floor((shape.x + shape.y) / 100) % colors.length];
+          
+          ctx.shadowColor = color;
+          ctx.shadowBlur = 10;
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 1;
+        }
+        
+        // Draw shape based on type
+        if (shape.type === 'circle') {
+          ctx.beginPath();
+          ctx.arc(0, 0, shape.size / 2, 0, Math.PI * 2);
+          ctx.stroke();
+        } else if (shape.type === 'hexagon') {
+          drawHexagon(ctx, 0, 0, shape.size / 2);
+          ctx.stroke();
+        } else if (shape.type === 'triangle') {
+          drawTriangle(ctx, 0, 0, shape.size / 2);
+          ctx.stroke();
+        }
+        
+        ctx.restore();
+      });
+      
+      // Draw stars
       starsRef.current.forEach((star) => {
-        // Mouse interaction - stars move away from cursor
+        // Mouse interaction
         const dx = star.x - mouse.x;
         const dy = star.y - mouse.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -133,11 +255,13 @@ const StarField: React.FC<StarFieldProps> = ({ darkMode }) => {
 
     resizeCanvas();
     createStars();
+    createGeometricShapes();
     animate();
 
     window.addEventListener('resize', () => {
       resizeCanvas();
       createStars();
+      createGeometricShapes();
     });
     
     window.addEventListener('mousemove', handleMouseMove);

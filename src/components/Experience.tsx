@@ -52,15 +52,15 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
 
   return (
     <section id="experience" className={`py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden ${
-      darkMode ? 'bg-black' : 'bg-white'
+      darkMode ? 'bg-black' : 'bg-gray-50'
     }`}>
       {/* Gradient Orbs */}
-      {darkMode && (
-        <>
-          <span className="absolute top-1/3 right-0 w-80 h-80 bg-gradient-to-l from-emerald-600/20 to-teal-600/20 rounded-full blur-3xl"></span>
-          <span className="absolute bottom-1/3 left-0 w-64 h-64 bg-gradient-to-r from-violet-600/15 to-purple-600/15 rounded-full blur-3xl"></span>
-        </>
-      )}
+      <div className={`absolute inset-0 pointer-events-none ${
+        darkMode ? 'opacity-100' : 'opacity-20'
+      }`}>
+        <span className="absolute top-1/3 right-0 w-80 h-80 bg-gradient-to-l from-emerald-600/20 to-teal-600/20 rounded-full blur-3xl"></span>
+        <span className="absolute bottom-1/3 left-0 w-64 h-64 bg-gradient-to-r from-violet-600/15 to-purple-600/15 rounded-full blur-3xl"></span>
+      </div>
       
       <div className="max-w-7xl mx-auto" ref={sectionRef}>
         <div className="text-center mb-16">

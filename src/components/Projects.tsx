@@ -92,15 +92,15 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
 
   return (
     <section id="projects" className={`py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden ${
-      darkMode ? 'bg-gray-950' : 'bg-gray-50'
+      darkMode ? 'bg-black' : 'bg-white'
     }`}>
       {/* Gradient Orbs */}
-      {darkMode && (
-        <>
-          <span className="absolute top-0 left-1/3 w-96 h-96 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-full blur-3xl"></span>
-          <span className="absolute bottom-0 right-1/3 w-72 h-72 bg-gradient-to-r from-pink-600/15 to-red-600/15 rounded-full blur-3xl"></span>
-        </>
-      )}
+      <div className={`absolute inset-0 pointer-events-none ${
+        darkMode ? 'opacity-100' : 'opacity-20'
+      }`}>
+        <span className="absolute top-0 left-1/3 w-96 h-96 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-full blur-3xl"></span>
+        <span className="absolute bottom-0 right-1/3 w-72 h-72 bg-gradient-to-r from-pink-600/15 to-red-600/15 rounded-full blur-3xl"></span>
+      </div>
       
       <div className="max-w-7xl mx-auto" ref={sectionRef}>
         <div className="text-center mb-16">

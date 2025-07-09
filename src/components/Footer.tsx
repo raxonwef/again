@@ -14,7 +14,7 @@ const Footer: React.FC<FooterProps> = ({ darkMode }) => {
   return (
     <footer className={`py-8 px-4 sm:px-6 lg:px-8 border-t ${
       darkMode
-        ? 'bg-gray-950 border-gray-800'
+        ? 'bg-black border-gray-800'
         : 'bg-gray-50 border-gray-200'
     }`}>
       <div className="max-w-7xl mx-auto">

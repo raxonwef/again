@@ -18,8 +18,8 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      darkMode ? 'bg-gray-900' : 'bg-white'
+    <div className={`min-h-screen transition-colors duration-500 ${
+      darkMode ? 'bg-black' : 'bg-white'
     }`}>
       <StarField darkMode={darkMode} />
       <Header
