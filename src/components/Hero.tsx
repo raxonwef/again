@@ -293,16 +293,19 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.8 }}
-          className="absolute bottom-16 left-1/2 transform -translate-x-1/2"
+          className="mt-16"
         >
-          <motion.div
+          <motion.button
+            onClick={scrollToAbout}
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.1, y: -5 }}
+            whileTap={{ scale: 0.9 }}
             className={`p-3 rounded-full backdrop-blur-xl border ${
               darkMode 
                 ? 'text-gray-400 bg-white/5 border-white/20' 
                 : 'text-gray-600 bg-white/40 border-white/60'
-            }`}
+            } cursor-pointer hover:shadow-lg transition-all duration-300`}
             style={{
               filter: darkMode 
                 ? 'drop-shadow(0 4px 15px rgba(139, 92, 246, 0.2))' 
@@ -310,7 +313,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             }}
           >
             <ArrowDown className="h-5 w-5" />
-          </motion.div>
+          </motion.button>
         </motion.div>
       </div>
 
