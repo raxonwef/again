@@ -58,7 +58,7 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
       <div className="absolute inset-0 pointer-events-none">
         {/* Wave separator at top */}
         <svg className="absolute top-0 left-0 w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className={darkMode ? 'fill-black' : 'fill-white'}></path>
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className={darkMode ? 'fill-black' : 'fill-gray-200'}></path>
         </svg>
         
         {/* Gradient Orbs */}
@@ -117,8 +117,8 @@ const Experience: React.FC<ExperienceProps> = ({ darkMode }) => {
                       boxShadow: darkMode ? "0 25px 50px rgba(34, 197, 94, 0.3)" : "0 25px 50px rgba(0, 0, 0, 0.1)"
                     }}
                     transition={{ duration: 0.4 }}
-                    className={`p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-400 backdrop-blur-sm border ${
-                      darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
+                    className={`p-6 rounded-xl transition-all duration-400 backdrop-blur-sm border ${
+                      darkMode ? 'bg-white/5 border-white/10 shadow-lg hover:shadow-xl' : 'bg-white/70 border-white/90 shadow-xl hover:shadow-2xl shadow-indigo-200/40 hover:shadow-indigo-300/50'
                     }`}
                   >
                     <div className="flex items-center space-x-2 mb-2">

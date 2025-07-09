@@ -98,7 +98,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
       <div className="absolute inset-0 pointer-events-none">
         {/* Wave separator at top */}
         <svg className="absolute top-0 left-0 w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" className={darkMode ? 'fill-gray-950' : 'fill-gray-50'}></path>
+          <path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" className={darkMode ? 'fill-gray-950' : 'fill-gray-200'}></path>
         </svg>
         
         {/* Gradient Orbs */}
@@ -177,8 +177,8 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                   boxShadow: darkMode ? "0 30px 60px rgba(59, 130, 246, 0.4)" : "0 30px 60px rgba(0, 0, 0, 0.15)",
                 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className={`rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-400 backdrop-blur-sm border ${
-                  darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
+                className={`rounded-xl overflow-hidden transition-all duration-400 backdrop-blur-sm border ${
+                  darkMode ? 'bg-white/5 border-white/10 shadow-lg hover:shadow-2xl' : 'bg-white/70 border-white/90 shadow-xl hover:shadow-2xl shadow-blue-200/40 hover:shadow-blue-300/50'
                 }`}
               >
                 <div className="relative overflow-hidden">

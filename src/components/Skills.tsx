@@ -51,7 +51,7 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
       <div className="absolute inset-0 pointer-events-none">
         {/* Wave separator at top */}
         <svg className="absolute top-0 left-0 w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" className={darkMode ? 'fill-gray-950' : 'fill-white'}></path>
+          <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" className={darkMode ? 'fill-gray-950' : 'fill-gray-200'}></path>
         </svg>
         
         {/* Gradient Orbs */}
@@ -83,8 +83,8 @@ const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
               }}
               transition={{ duration: 0.4 }}
               className={`p-6 rounded-xl backdrop-blur-sm border transition-all duration-400 ${
-                darkMode ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'
-              } shadow-lg hover:shadow-xl`}
+                darkMode ? 'bg-white/5 border-white/10' : 'bg-white/70 border-white/90'
+              } ${darkMode ? 'shadow-lg hover:shadow-xl' : 'shadow-xl hover:shadow-2xl shadow-purple-200/40 hover:shadow-purple-300/50'}`}
             >
               <h3 className={`text-xl font-bold mb-6 text-center ${
                 darkMode ? 'text-white' : 'text-gray-900'
